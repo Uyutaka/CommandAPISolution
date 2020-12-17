@@ -1,15 +1,27 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using CommandAPI.Data;
+using CommandAPI.Models;
+
 namespace CommandAPI.Controllers
 {
     [Route("api/[controller]")] // Use the class name
     [ApiController]
     public class CommandsController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly ICommandAPIRepo _repository;
+        
+        // Constructor Dependency Injection (ICommandAPIRepo => MockCommandAPIRepo)
+        public CommandsController(ICommandAPIRepo repository)
         {
-            return new string[] {"this", "is", "hard", "coded"};
+            _repository = repository;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Command>> GetAllCommands()
+        {
+            var commandItems = _repository.GetAllCommands();
+            return Ok(commandItems);
         }
     }
 }
