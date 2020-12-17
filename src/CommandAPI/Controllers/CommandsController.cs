@@ -23,5 +23,16 @@ namespace CommandAPI.Controllers
             var commandItems = _repository.GetAllCommands();
             return Ok(commandItems);
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<Command> GetCommandById(int id)
+        {
+            var command = _repository.GetCommandById(id);
+            if(command == null)
+            {
+                return NotFound();
+            }
+            return Ok(command);
+        }
     }
 }
