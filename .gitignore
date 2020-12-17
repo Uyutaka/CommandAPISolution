@@ -33,3 +33,5 @@ msbuild.wrn
 *.exe
 *.o
 *.so
+*.cache
+*.pdb
