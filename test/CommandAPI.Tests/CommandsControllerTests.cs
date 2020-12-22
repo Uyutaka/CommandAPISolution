@@ -96,7 +96,9 @@ namespace CommandAPI.Tests
             var result = controller.GetAllCommands();
 
             // Assert
-            Assert.IsType<OkObjectResult>(result.Result);
+            // Assert.IsType<OkObjectResult>(result.Result);
+            Assert.IsType<NotFoundResult>(result.Result);
+
         }
 
     }
