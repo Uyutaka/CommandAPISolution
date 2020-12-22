@@ -14,6 +14,7 @@ namespace CommandAPI.Tests
 {
     public class CommandsControllerTests : IDisposable
     {
+        // CICD test
         Mock<ICommandAPIRepo> mockRepo;
         CommandsProfile realProfile;
         MapperConfiguration configuration;
